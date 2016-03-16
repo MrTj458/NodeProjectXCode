@@ -118,3 +118,29 @@ void CTECArray<Type>::set(int position, const Type& value)
 		}
 	}
 }
+
+/*
+ Checks for the inputted value and returns the spot it is at.
+*/
+template <class Type>
+int CTECArray<Type>::indexOf(Type searchValue)
+{
+    assert(this->size > 0);
+    
+    ArrayNode<Type> * current = head;
+    int indexNotFound = -1;
+    
+    for(int index = 0; index < this->size; index++)
+    {
+        if(current->getValue() == searchValue)
+        {
+            return index;
+        }
+        else
+        {
+            current = current->getNext();
+        }
+    }
+    
+    return indexNotFound;
+}
