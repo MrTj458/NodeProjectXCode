@@ -21,6 +21,7 @@ class NodeController
 private:
 	CTECList<int> * numbers;
 	Timer * timer;
+    CTECArray<int> * array;
 public:
 	NodeController();
 	virtual ~NodeController();

@@ -13,6 +13,7 @@ NodeController::NodeController()
 {
 	numbers = new CTECList<int>();
 	timer = new Timer();
+    array = new CTECArray<int>(6);
 }
 
 NodeController::~NodeController()
@@ -50,4 +51,16 @@ void NodeController::testLists()
 
 	timer->stopTimer();
 	timer->displayTimerInformation();
+    
+    cout << endl;
+    cout << endl;
+    
+    array->set(0, 1);
+    array->set(1, 2);
+    array->set(2, 3);
+    array->set(3, 4);
+    array->set(4, 5);
+    array->set(5, 6);
+    
+    cout << "The value in spot 4 should be 3 and is: " << array->indexOf(4) << endl;
 }
