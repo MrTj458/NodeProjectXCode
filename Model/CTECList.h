@@ -31,6 +31,7 @@ public:
 	Type removeFromEnd();
 	Type removeFromIndex(int index);
 	Type set(int index, const Type& value);
+    int indexOf(Type searchValue);
 };
 
 #endif /* MODEL_CTECLIST_H_ */
