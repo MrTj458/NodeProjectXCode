@@ -167,7 +167,7 @@ int CTECArray<Type>::nextIndexOf(int startingIndex, Type searchValue)
         }
         else
         {
-            current = current->getValue();
+            current = current->getNext();
         }
     }
     return indexNotFound;
