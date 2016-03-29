@@ -22,6 +22,7 @@ private:
 	CTECList<int> * numbers;
 	Timer * timer;
     CTECArray<int> * array;
+    void sortData();
 public:
 	NodeController();
 	virtual ~NodeController();
