@@ -24,6 +24,7 @@ public:
 	void set(int position, const Type& value);
     int indexOf(Type searchValue);
     int nextIndexOf(int startingIndex, Type searchValue);
+    void selectionSort();
 };
 
 #endif /* MODEL_CTECARRAY_H_ */
