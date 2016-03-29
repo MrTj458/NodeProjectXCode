@@ -53,6 +53,7 @@ int CTECList<Type>::getSize()
 	return size;
 }
 
+
 /*
  * Calculates how many nodes are currently in the CTECList
  */
@@ -77,6 +78,15 @@ void CTECList<Type>::calculateSize()
 		}
 		size = count;
 	}
+}
+
+template <class Type>
+void CTECList<Type>::swap(int index1, int index2)
+{
+    assert(index1 < size && index2 < size);
+    Type temp = getFromIndex(index1);
+    set(index1, getFromIndex(index2));
+    set(index2, temp);
 }
 
 /*

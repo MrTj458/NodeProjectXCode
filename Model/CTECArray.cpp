@@ -72,6 +72,15 @@ int CTECArray<Type>::getSize()
 	return this->size;
 }
 
+template <class Type>
+void CTECArray<Type>::swap(int index1, int index2)
+{
+    assert(index1 < size && index2 < size);
+    Type temp = get(index1);
+    set(index1, get(index2));
+    set(index2, temp);
+}
+
 /*
  * Returns the value of the Node in the inputed position.
  */

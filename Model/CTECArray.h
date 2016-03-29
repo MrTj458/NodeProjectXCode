@@ -15,6 +15,7 @@ class CTECArray
 private:
 	int size;
 	ArrayNode<Type> * head;
+    void swap(int index1, int index2);
 public:
 	CTECArray(int size);
 	virtual ~CTECArray();

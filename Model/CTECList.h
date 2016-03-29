@@ -21,6 +21,7 @@ public:
 	CTECList();
 	virtual ~CTECList();
 	int getSize();
+    void swap(int index1, int index2);
 	void addToFront(const Type& value);
 	void addToEnd(const Type& value);
 	void addAtIndex(int index, const Type& value);
