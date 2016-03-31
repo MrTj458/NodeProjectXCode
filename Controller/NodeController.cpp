@@ -24,7 +24,8 @@ NodeController::~NodeController()
 
 void NodeController :: start()
 {
-    sortData();
+    doMergeSort();
+    //sortData();
 	//testLists();
 }
 
@@ -116,9 +117,9 @@ void NodeController::sortData()
 
 void NodeController::doMergeSort()
 {
-    mergeData = new int[500000];
+    mergeData = new int[500000000];
     
-    for(int spot = 0; spot < 500000; spot++)
+    for(int spot = 0; spot < 500000000; spot++)
     {
         int myRandom = rand();
         mergeData[spot] = myRandom;
@@ -130,7 +131,7 @@ void NodeController::doMergeSort()
     
     Timer mergeTimer;
     mergeTimer.startTimer();
-    mergeSort(mergeData, 500000);
+    mergeSort(mergeData, 500000000);
     mergeTimer.stopTimer();
     mergeTimer.displayTimerInformation();
     
@@ -194,4 +195,24 @@ void NodeController::merge(int data[], int sizeOne, int sizeTwo)
         data[index] = temp[index];
     }
     delete [] temp;
+}
+
+void NodeController::swap(int first, int last)
+{
+    
+}
+
+void NodeController::quicksort(int first, int last)
+{
+    
+}
+
+int NodeController::partition(int first, int last)
+{
+    return -1;
+}
+
+void NodeController::doQuick()
+{
+    
 }

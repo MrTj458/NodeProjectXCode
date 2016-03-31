@@ -28,6 +28,11 @@ private:
     void doMergeSort();
     void mergeSort(int data [], int size);
     void merge(int data [], int sizeOne, int sizeTwo);
+    
+    void swap(int first, int second);
+    void quicksort(int first, int last);
+    int partition(int first, int last);
+    void doQuick();
 public:
 	NodeController();
 	virtual ~NodeController();
