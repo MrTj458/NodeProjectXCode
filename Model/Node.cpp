@@ -5,7 +5,6 @@
  *      Author: thod0127
  */
 
-#include <iostream>
 #include "Node.h"
 
 /*

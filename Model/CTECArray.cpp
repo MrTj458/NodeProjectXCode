@@ -59,8 +59,6 @@ CTECArray<Type>::~CTECArray()
 		delete deleteMe;
 		deleteMe = head;
 	}
-
-	delete head;
 }
 
 /*
@@ -102,7 +100,7 @@ Type CTECArray<Type>::get(int position)
 			return current->getValue();
 		}
 	}
-    return current->getValue;
+    return current->getValue();
 }
 
 /*

@@ -23,6 +23,11 @@ private:
 	Timer * timer;
     CTECArray<int> * array;
     void sortData();
+    
+    int * mergeData;
+    void doMergeSort();
+    void mergeSort(int data [], int size);
+    void merge(int data [], int sizeOne, int sizeTwo);
 public:
 	NodeController();
 	virtual ~NodeController();

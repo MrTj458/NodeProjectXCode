@@ -8,6 +8,9 @@
 #ifndef MODEL_CTECLIST_H_
 #define MODEL_CTECLIST_H_
 #include "ArrayNode.h"
+#include <iostream>
+#include <assert.h>
+using namespace std;
 
 template <class Type>
 class CTECList
