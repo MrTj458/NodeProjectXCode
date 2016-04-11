@@ -15,6 +15,7 @@
 		3A5536B81C99DC1200DE37FB /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A5536AF1C99DC1200DE37FB /* Node.cpp */; };
 		3A5536B91C99DC1200DE37FB /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A5536B11C99DC1200DE37FB /* Timer.cpp */; };
 		3AEFD3961CBC1D37005291B4 /* TreeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AEFD3941CBC1D37005291B4 /* TreeNode.cpp */; };
+		3AEFD3991CBC2CFC005291B4 /* CTECBinaryTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AEFD3971CBC2CFC005291B4 /* CTECBinaryTree.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,8 @@
 		3A5536B21C99DC1200DE37FB /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		3AEFD3941CBC1D37005291B4 /* TreeNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TreeNode.cpp; sourceTree = "<group>"; };
 		3AEFD3951CBC1D37005291B4 /* TreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeNode.h; sourceTree = "<group>"; };
+		3AEFD3971CBC2CFC005291B4 /* CTECBinaryTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CTECBinaryTree.cpp; sourceTree = "<group>"; };
+		3AEFD3981CBC2CFC005291B4 /* CTECBinaryTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTECBinaryTree.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 				3A5536B21C99DC1200DE37FB /* Timer.h */,
 				3AEFD3941CBC1D37005291B4 /* TreeNode.cpp */,
 				3AEFD3951CBC1D37005291B4 /* TreeNode.h */,
+				3AEFD3971CBC2CFC005291B4 /* CTECBinaryTree.cpp */,
+				3AEFD3981CBC2CFC005291B4 /* CTECBinaryTree.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 				3A5536B91C99DC1200DE37FB /* Timer.cpp in Sources */,
 				3AEFD3961CBC1D37005291B4 /* TreeNode.cpp in Sources */,
 				3A5536B41C99DC1200DE37FB /* NodeRunner.cpp in Sources */,
+				3AEFD3991CBC2CFC005291B4 /* CTECBinaryTree.cpp in Sources */,
 				3A5536B51C99DC1200DE37FB /* ArrayNode.cpp in Sources */,
 				3A5536B71C99DC1200DE37FB /* CTECList.cpp in Sources */,
 				3A5536B61C99DC1200DE37FB /* CTECArray.cpp in Sources */,
