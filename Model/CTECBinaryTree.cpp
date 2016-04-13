@@ -20,6 +20,47 @@ CTECBinaryTree<Type>::CTECBinaryTree()
 }
 
 template <class Type>
+bool CTECBinaryTree<Type>::insert(const Type& value)
+{
+    if(contains(value))
+    {
+        return false;
+    }
+    else
+    {
+        TreeNode<Type> newNode = new TreeNode<Type>(value);
+        TreeNode<Type> current = root;
+        TreeNode<Type> previous = current;
+        while(current != nullptr)
+        {
+            previous = current;
+            if(current->getValue == newNode->getValue)
+            {
+                //duplicate value
+                return false;
+            }
+            else if(current->getValue() > newNode->getValue)
+            {
+                current = current->getLeftChild();
+            }
+            else
+            {
+                current = current->getRightChild();
+            }
+        }
+        
+        if(previous->getValue > newNode->getValue())
+        {
+            //insert to the left
+        }
+        else
+        {
+            //insert to the right
+        }
+    }
+}
+
+template <class Type>
 int CTECBinaryTree<Type>::getSize()
 {
     size = 0;
