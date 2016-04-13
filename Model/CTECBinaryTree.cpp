@@ -19,6 +19,31 @@ CTECBinaryTree<Type>::CTECBinaryTree()
     this->height = 0;
 }
 
+template <class Type>
+int CTECBinaryTree<Type>::getSize()
+{
+    size = 0;
+    size = calculateSize(root);
+    return size;
+}
+
+template <class Type>
+void CTECBinaryTree<Type>::calculateSize(TreeNode<Type> * currentNode)
+{
+    if(currentNode != nullptr)
+    {
+        calculateSize(currentNode->getLeftChild());
+        calculateSize(currentNode->getLeftChild());
+        size++;
+    }
+}
+
+template <class Type>
+TreeNode<Type> * CTECBinaryTree<Type>::getRoot()
+{
+    return root;
+}
+
 template <class  Type>
 void CTECBinaryTree<Type>::preorderTransversal(TreeNode<Type> * currentNode)
 {
