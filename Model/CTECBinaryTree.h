@@ -30,6 +30,9 @@ public:
     TreeNode<Type> * getRoot();
     int getHeight();
     bool isBalanced();
+    void preorderTransrsal(TreeNode<Type> * currentNode);
+    void inorderTransversal(TreeNode<Type> * currentNode);
+    void postorderTransversal(TreeNode<Type> * currentNode);
 };
 
 #endif /* BinaryTree_hpp */
