@@ -31,31 +31,154 @@ bool CTECBinaryTree<Type>::insert(const Type& value)
         TreeNode<Type> newNode = new TreeNode<Type>(value);
         TreeNode<Type> current = root;
         TreeNode<Type> previous = current;
-        while(current != nullptr)
-        {
-            previous = current;
-            if(current->getValue == newNode->getValue)
-            {
-                //duplicate value
-                return false;
-            }
-            else if(current->getValue() > newNode->getValue)
-            {
-                current = current->getLeftChild();
-            }
-            else
-            {
-                current = current->getRightChild();
-            }
-        }
         
-        if(previous->getValue > newNode->getValue())
+        if(root == nullptr)
         {
-            //insert to the left
+            
         }
         else
         {
-            //insert to the right
+            while(current != nullptr)
+            {
+                previous = current;
+                
+                if(current->getValue == newNode->getValue)
+                {
+                    cerr << "Duplicate item on the list" << endl;
+                    return false;
+                }
+                else if(current->getValue() > newNode->getValue)
+                {
+                    current = current->getLeftChild();
+                }
+                else
+                {
+                    current = current->getRightChild();
+                }
+            }
+            
+            if(previous->getValue > newNode->getValue())
+            {
+                previous->setLeftChild(newNode);
+            }
+            else
+            {
+                previous->setRightChild(newNode);
+            }
+        }
+    }
+}
+
+template <class Type>
+void CTECBinaryTree<Type>::deleteFromTree(TreeNode<Type> * toDelete)
+{
+    TreeNode<Type> current;
+    TreeNode<Type> previous;
+    TreeNode<Type> temp;
+    
+    if(toDelete == nullptr)
+    {
+        cerr << "Cannot remove null from the list";
+    }
+    else if(toDelete->getRightLink == nullptr && toDelete->getLeftLink == nullptr)
+    {
+        temp = toDelete;
+        toDelete = nullptr;
+        delete temp;
+    }
+    else if(toDelete->getLeftChild == nullptr)
+    {
+        temp = toDelete;
+        toDelete = temp->getRightChild();
+        delete temp;
+    }
+    else if(toDelete->getRightChild == nullptr)
+    {
+        temp = toDelete;
+        toDelete = temp->getLeftChild();
+        delete temp;
+    }
+    else
+    {
+        current = toDelete->getLeftChild();
+        previous = nullptr;
+        
+        while(current->getRightChild != nullptr)
+        {
+            previous = current;
+            current = current->getRightChild;
+        }
+        
+        toDelete->getValue = current->getValue;
+        
+        if(previous == nullptr)
+        {
+            toDelete->getLeftChild = current->getLeftChild;
+        }
+        else
+        {
+            previous->getRightChild = current->getLeftChild;
+        }
+        
+        delete current;
+    }
+}
+
+template <class Type>
+Type CTECBinaryTree<Type>::remove(const Type& value)
+{
+    TreeNode<Type> current;
+    TreeNode<Type> previous;
+    bool found = false;
+    
+    if(root == nullptr)
+    {
+        cout << "Cannot delete from an empty tree." << endl;
+    }
+    else
+    {
+        current = root;
+        previous = root;
+        
+        while(current != NULL && !found)
+        {
+            if(current->getValue == value)
+            {
+                found = true;
+            }
+            else
+            {
+                previous = current;
+                
+                if(current->getValue > value)
+                {
+                    current = current->getLeftChild;
+                }
+                else
+                {
+                    current = current->getRightChild;
+                }
+            }
+        }
+        
+        if(current == NULL)
+        {
+            cout << "The delete item is not in the tree" << endl;
+        }
+        else if(found)
+        {
+            if(current == root)
+            {
+                deleteFromTree(root);
+            }
+            else if(previous->getValue > value)
+            {
+                deleteFromTree(previous->getLeftChild);
+            }
+            else
+            {
+                deleteFromTree(previous->getRightChild);
+            }
         }
     }
 }

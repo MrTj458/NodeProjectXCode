@@ -21,6 +21,7 @@ private:
     bool balanced;                                                  //done
     bool contains(Type value, CTECBinaryTree<Type> * currentTree);  //done
     void calculateSize(TreeNode<Type> * currentNode);               //done
+    void deleteFromTree(TreeNode<Type> * toDelete);
 public:
     CTECBinaryTree();                                               //done
     ~CTECBinaryTree();
