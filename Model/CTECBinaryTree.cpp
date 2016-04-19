@@ -28,13 +28,12 @@ bool CTECBinaryTree<Type>::insert(const Type& value)
     }
     else
     {
-        TreeNode<Type> newNode = new TreeNode<Type>(value);
         TreeNode<Type> current = root;
-        TreeNode<Type> previous = current;
+        TreeNode<Type> previous;
         
         if(root == nullptr)
         {
-            
+            root = new TreeNode<Type>(value);
         }
         else
         {
@@ -42,12 +41,7 @@ bool CTECBinaryTree<Type>::insert(const Type& value)
             {
                 previous = current;
                 
-                if(current->getValue == newNode->getValue)
-                {
-                    cerr << "Duplicate item on the list" << endl;
-                    return false;
-                }
-                else if(current->getValue() > newNode->getValue)
+                if(current->getValue() > value)
                 {
                     current = current->getLeftChild();
                 }
@@ -57,24 +51,25 @@ bool CTECBinaryTree<Type>::insert(const Type& value)
                 }
             }
             
-            if(previous->getValue > newNode->getValue())
+            if(previous->getValue() > value)
             {
-                previous->setLeftChild(newNode);
+                previous->setLeftChild(new TreeNode<Type>(value, previous));
             }
             else
             {
-                previous->setRightChild(newNode);
+                previous->setRightChild(new TreeNode<Type>(value, previous));
             }
         }
     }
+    return true;
 }
 
 template <class Type>
 void CTECBinaryTree<Type>::deleteFromTree(TreeNode<Type> * toDelete)
 {
-    TreeNode<Type> current;
-    TreeNode<Type> previous;
-    TreeNode<Type> temp;
+    TreeNode<Type> * current;
+    TreeNode<Type> * previous;
+    TreeNode<Type> * temp;
     
     if(toDelete == nullptr)
     {
@@ -109,15 +104,15 @@ void CTECBinaryTree<Type>::deleteFromTree(TreeNode<Type> * toDelete)
             current = current->getRightChild;
         }
         
-        toDelete->getValue = current->getValue;
+        toDelete->setValue(current->getValue());
         
         if(previous == nullptr)
         {
-            toDelete->getLeftChild = current->getLeftChild;
+            toDelete->setLeftChild(current->getLeftChild());
         }
         else
         {
-            previous->getRightChild = current->getLeftChild;
+            previous->setRightChild(current->getLeftChild());
         }
         
         delete current;
@@ -125,10 +120,10 @@ void CTECBinaryTree<Type>::deleteFromTree(TreeNode<Type> * toDelete)
 }
 
 template <class Type>
-Type CTECBinaryTree<Type>::remove(const Type& value)
+Type CTECBinaryTree<Type>::deleteNode(const Type& value)
 {
-    TreeNode<Type> current;
-    TreeNode<Type> previous;
+    TreeNode<Type> * current;
+    TreeNode<Type> * previous;
     bool found = false;
     
     if(root == nullptr)
@@ -140,9 +135,9 @@ Type CTECBinaryTree<Type>::remove(const Type& value)
         current = root;
         previous = root;
         
-        while(current != NULL && !found)
+        while(current != nullptr && !found)
         {
-            if(current->getValue == value)
+            if(current->getValue() == value)
             {
                 found = true;
             }
@@ -150,7 +145,7 @@ Type CTECBinaryTree<Type>::remove(const Type& value)
             {
                 previous = current;
                 
-                if(current->getValue > value)
+                if(current->getValue() > value)
                 {
                     current = current->getLeftChild;
                 }
@@ -161,7 +156,7 @@ Type CTECBinaryTree<Type>::remove(const Type& value)
             }
         }
         
-        if(current == NULL)
+        if(current == nullptr)
         {
             cout << "The delete item is not in the tree" << endl;
         }
@@ -171,13 +166,13 @@ Type CTECBinaryTree<Type>::remove(const Type& value)
             {
                 deleteFromTree(root);
             }
-            else if(previous->getValue > value)
+            else if(previous->getValue() > value)
             {
-                deleteFromTree(previous->getLeftChild);
+                deleteFromTree(previous->getLeftChild());
             }
             else
             {
-                deleteFromTree(previous->getRightChild);
+                deleteFromTree(previous->getRightChild());
             }
         }
     }

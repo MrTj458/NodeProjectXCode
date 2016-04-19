@@ -22,10 +22,13 @@ private:
     bool contains(Type value, CTECBinaryTree<Type> * currentTree);  //done
     void calculateSize(TreeNode<Type> * currentNode);               //done
     void deleteFromTree(TreeNode<Type> * toDelete);
+    Type deleteNode(const Type& value);
+    TreeNode<Type> * getRightMostChild(CTECBinaryTree<Type> leftSubTree);
+    TreeNode<Type> * getLeftMostChild(CTECBinaryTree<Type> rightSubTree);
 public:
     CTECBinaryTree();                                               //done
     ~CTECBinaryTree();
-    bool insert(const Type& value);
+    bool insert(const Type& value);                                 //done
     Type remove(const Type& value);
     bool contains(Type value);                                      //done
     int getSize();                                                  //done
