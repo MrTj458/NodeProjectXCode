@@ -19,12 +19,12 @@ private:
     TreeNode<Type> * root;                                          //done
     int height;                                                     //done
     bool balanced;                                                  //done
-    bool contains(Type value, CTECBinaryTree<Type> * currentTree);  //done
+    bool contains(Type value, TreeNode<Type> * currentTree);  //done
     void calculateSize(TreeNode<Type> * currentNode);               //done
     void deleteFromTree(TreeNode<Type> * toDelete);
     Type deleteNode(const Type& value);
-    TreeNode<Type> * getRightMostChild(CTECBinaryTree<Type> leftSubTree);
-    TreeNode<Type> * getLeftMostChild(CTECBinaryTree<Type> rightSubTree);
+    TreeNode<Type> * getRightMostChild(TreeNode<Type> * leftSubTree);
+    TreeNode<Type> * getLeftMostChild(TreeNode<Type> * rightSubTree);
 public:
     CTECBinaryTree();                                               //done
     ~CTECBinaryTree();
