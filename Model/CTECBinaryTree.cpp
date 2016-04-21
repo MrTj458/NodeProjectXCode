@@ -65,37 +65,37 @@ bool CTECBinaryTree<Type>::insert(const Type& value)
 }
 
 template <class Type>
-void CTECBinaryTree<Type>::deleteFromTree(TreeNode<Type> * toDelete)
+void CTECBinaryTree<Type>::remove(TreeNode<Type> * nodeToBeRemoved)
 {
     TreeNode<Type> * current;
     TreeNode<Type> * previous;
     TreeNode<Type> * temp;
     
-    if(toDelete == nullptr)
+    if(nodeToBeRemoved == nullptr)
     {
         cerr << "Cannot remove null from the list";
     }
-    else if(toDelete->getRightLink == nullptr && toDelete->getLeftLink == nullptr)
+    else if(nodeToBeRemoved->getRightLink == nullptr && nodeToBeRemoved->getLeftLink == nullptr)
     {
-        temp = toDelete;
-        toDelete = nullptr;
+        temp = nodeToBeRemoved;
+        nodeToBeRemoved = nullptr;
         delete temp;
     }
-    else if(toDelete->getLeftChild == nullptr)
+    else if(nodeToBeRemoved->getLeftChild == nullptr)
     {
-        temp = toDelete;
-        toDelete = temp->getRightChild();
+        temp = nodeToBeRemoved;
+        nodeToBeRemoved = temp->getRightChild();
         delete temp;
     }
-    else if(toDelete->getRightChild == nullptr)
+    else if(nodeToBeRemoved->getRightChild == nullptr)
     {
-        temp = toDelete;
-        toDelete = temp->getLeftChild();
+        temp = nodeToBeRemoved;
+        nodeToBeRemoved = temp->getLeftChild();
         delete temp;
     }
     else
     {
-        current = toDelete->getLeftChild();
+        current = nodeToBeRemoved->getLeftChild();
         previous = nullptr;
         
         while(current->getRightChild != nullptr)
@@ -104,11 +104,11 @@ void CTECBinaryTree<Type>::deleteFromTree(TreeNode<Type> * toDelete)
             current = current->getRightChild;
         }
         
-        toDelete->setValue(current->getValue());
+        nodeToBeRemoved->setValue(current->getValue());
         
         if(previous == nullptr)
         {
-            toDelete->setLeftChild(current->getLeftChild());
+            nodeToBeRemoved->setLeftChild(current->getLeftChild());
         }
         else
         {
@@ -120,60 +120,45 @@ void CTECBinaryTree<Type>::deleteFromTree(TreeNode<Type> * toDelete)
 }
 
 template <class Type>
-Type CTECBinaryTree<Type>::deleteNode(const Type& value)
+void CTECBinaryTree<Type>::remove(const Type& value)
 {
     TreeNode<Type> * current;
     TreeNode<Type> * previous;
-    bool found = false;
     
-    if(root == nullptr)
+    if(!contains(value))
     {
-        cout << "Cannot delete from an empty tree." << endl;
+        return;
     }
     else
     {
         current = root;
         previous = root;
         
-        while(current != nullptr && !found)
+        while(current != nullptr && current->getValue() != value)
         {
-            if(current->getValue() == value)
+            previous = current;
+                
+            if(current->getValue() > value)
             {
-                found = true;
+                current = current->getLeftChild();
             }
             else
             {
-                previous = current;
-                
-                if(current->getValue() > value)
-                {
-                    current = current->getLeftChild;
-                }
-                else
-                {
-                    current = current->getRightChild;
-                }
+                current = current->getRightChild();
             }
         }
         
-        if(current == nullptr)
+        if(current == root)
         {
-            cout << "The delete item is not in the tree" << endl;
+            remove(root);
         }
-        else if(found)
+        else if(previous->getValue() > value)
         {
-            if(current == root)
-            {
-                deleteFromTree(root);
-            }
-            else if(previous->getValue() > value)
-            {
-                deleteFromTree(previous->getLeftChild());
-            }
-            else
-            {
-                deleteFromTree(previous->getRightChild());
-            }
+            remove(previous->getLeftChild());
+        }
+        else
+        {
+            remove(previous->getRightChild());
         }
     }
 }

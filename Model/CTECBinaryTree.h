@@ -21,15 +21,14 @@ private:
     bool balanced;                                                  //done
     bool contains(Type value, TreeNode<Type> * currentTree);  //done
     void calculateSize(TreeNode<Type> * currentNode);               //done
-    void deleteFromTree(TreeNode<Type> * toDelete);
-    Type deleteNode(const Type& value);
+    void remove(TreeNode<Type> * nodeToBeRemoved);
     TreeNode<Type> * getRightMostChild(TreeNode<Type> * leftSubTree);
     TreeNode<Type> * getLeftMostChild(TreeNode<Type> * rightSubTree);
 public:
     CTECBinaryTree();                                               //done
     ~CTECBinaryTree();
     bool insert(const Type& value);                                 //done
-    Type remove(const Type& value);
+    void remove(const Type& value);
     bool contains(Type value);                                      //done
     int getSize();                                                  //done
     TreeNode<Type> * getRoot();                                     //done
