@@ -75,19 +75,19 @@ void CTECBinaryTree<Type>::remove(TreeNode<Type> * nodeToBeRemoved)
     {
         cerr << "Cannot remove null from the list";
     }
-    else if(nodeToBeRemoved->getRightLink == nullptr && nodeToBeRemoved->getLeftLink == nullptr)
+    else if(nodeToBeRemoved->getLeftChild() == nullptr && nodeToBeRemoved->getRightChild() == nullptr)
     {
         temp = nodeToBeRemoved;
         nodeToBeRemoved = nullptr;
         delete temp;
     }
-    else if(nodeToBeRemoved->getLeftChild == nullptr)
+    else if(nodeToBeRemoved->getLeftChild() == nullptr)
     {
         temp = nodeToBeRemoved;
         nodeToBeRemoved = temp->getRightChild();
         delete temp;
     }
-    else if(nodeToBeRemoved->getRightChild == nullptr)
+    else if(nodeToBeRemoved->getRightChild() == nullptr)
     {
         temp = nodeToBeRemoved;
         nodeToBeRemoved = temp->getLeftChild();
@@ -98,10 +98,10 @@ void CTECBinaryTree<Type>::remove(TreeNode<Type> * nodeToBeRemoved)
         current = nodeToBeRemoved->getLeftChild();
         previous = nullptr;
         
-        while(current->getRightChild != nullptr)
+        while(current->getRightChild() != nullptr)
         {
             previous = current;
-            current = current->getRightChild;
+            current = current->getRightChild();
         }
         
         nodeToBeRemoved->setValue(current->getValue());
