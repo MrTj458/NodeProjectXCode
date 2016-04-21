@@ -33,7 +33,7 @@ TreeNode<Type>::TreeNode(const Type&value, TreeNode<Type> * parent) : Node<Type>
 }
 
 template <class Type>
-void TreeNode<Type>::setLeftchild(TreeNode<Type> * leftChild)
+void TreeNode<Type>::setLeftChild(TreeNode<Type> * leftChild)
 {
     this->leftChild = leftChild;
 }

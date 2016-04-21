@@ -12,6 +12,7 @@
 #include "../Model/CTECArray.cpp"
 #include "../Model/CTECList.cpp"
 #include "../Model/Timer.h"
+#include "../Model/CTECBinaryTree.cpp"
 #include <string>
 
 using namespace std;
@@ -33,6 +34,8 @@ private:
     void quicksort(int first, int last);
     int partition(int first, int last);
     void doQuick();
+    
+    void tryTree();
 public:
 	NodeController();
 	virtual ~NodeController();

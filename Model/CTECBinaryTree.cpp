@@ -19,6 +19,12 @@ CTECBinaryTree<Type>::CTECBinaryTree()
     this->height = 0;
 }
 
+template<class Type>
+CTECBinaryTree<Type>::~CTECBinaryTree()
+{
+    
+}
+
 template <class Type>
 bool CTECBinaryTree<Type>::insert(const Type& value)
 {
@@ -28,8 +34,8 @@ bool CTECBinaryTree<Type>::insert(const Type& value)
     }
     else
     {
-        TreeNode<Type> current = root;
-        TreeNode<Type> previous;
+        TreeNode<Type> * current = root;
+        TreeNode<Type> * previous;
         
         if(root == nullptr)
         {
@@ -215,34 +221,34 @@ TreeNode<Type> * CTECBinaryTree<Type>::getRoot()
 }
 
 template <class  Type>
-void CTECBinaryTree<Type>::preorderTransversal(TreeNode<Type> * currentNode)
+void CTECBinaryTree<Type>::preorderTraversal(TreeNode<Type> * currentNode)
 {
     if(currentNode != nullptr)
     {
         cout << currentNode->getValue() << " ";
-        preorderTransrsal(currentNode->getLeftChild());
-        preorderTransrsal(currentNode->getRightChild());
+        preorderTraversal(currentNode->getLeftChild());
+        preorderTraversal(currentNode->getRightChild());
     }
 }
 
 template <class  Type>
-void CTECBinaryTree<Type>::inorderTransversal(TreeNode<Type> * currentNode)
+void CTECBinaryTree<Type>::inorderTraversal(TreeNode<Type> * currentNode)
 {
     if(currentNode != nullptr)
     {
-        inorderTransrsal(currentNode->getLeftChild());
+        inorderTraversal(currentNode->getLeftChild());
         cout << currentNode->getValue() << " ";
-        inorderTransrsal(currentNode->getRightChild());
+        inorderTraversal(currentNode->getRightChild());
     }
 }
 
 template <class  Type>
-void CTECBinaryTree<Type>::postorderTransversal(TreeNode<Type> * currentNode)
+void CTECBinaryTree<Type>::postorderTraversal(TreeNode<Type> * currentNode)
 {
     if(currentNode != nullptr)
     {
-        postorderTransrsal(currentNode->getLeftChild());
-        postorderTransrsal(currentNode->getRightChild());
+        postorderTraversal(currentNode->getLeftChild());
+        postorderTraversal(currentNode->getRightChild());
         cout << currentNode->getValue() << " ";
     }
 }
@@ -289,11 +295,11 @@ bool CTECBinaryTree<Type>::contains(Type value, TreeNode<Type> * currentTree)
         {
             if(value < currentTree->getValue())
             {
-                isInTree = contains(value, currentTree->getRoot()->getLeftChild());
+                isInTree = contains(value, currentTree->getLeftChild());
             }
             else
             {
-                isInTree = contains(value, currentTree->getRoot()->getRightChild());
+                isInTree = contains(value, currentTree->getRightChild());
             }
         }
     }

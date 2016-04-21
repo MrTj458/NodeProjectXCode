@@ -24,7 +24,8 @@ NodeController::~NodeController()
 
 void NodeController :: start()
 {
-    doQuick();
+    tryTree();
+    //doQuick();
     //doMergeSort();
     //sortData();
 	//testLists();
@@ -257,4 +258,27 @@ void NodeController::doQuick()
     mergeTimer.displayTimerInformation();
     
     delete [] mergeData;
+}
+
+void NodeController::tryTree()
+{
+    CTECBinaryTree<int> firstTree;
+    
+    firstTree.insert(72);
+    firstTree.insert(846);
+    firstTree.insert(-42);
+    firstTree.insert(3);
+    
+    cout << "The tree  in order traversal:" << endl;
+    firstTree.inorderTraversal(firstTree.getRoot());
+    cout << endl;
+    
+    cout << "The tree  pre order traversal:" << endl;
+    firstTree.preorderTraversal(firstTree.getRoot());
+    cout << endl;
+    
+    
+    cout << "The tree  post order traversal:" << endl;
+    firstTree.postorderTraversal(firstTree.getRoot());
+    cout << endl;
 }

@@ -9,7 +9,7 @@
 #ifndef BinaryTree_hpp
 #define BinaryTree_hpp
 
-#include "TreeNode.h"
+#include "TreeNode.cpp"
 
 template <class Type>
 class CTECBinaryTree
@@ -34,9 +34,9 @@ public:
     TreeNode<Type> * getRoot();                                     //done
     int getHeight();
     bool isBalanced();
-    void preorderTransversal(TreeNode<Type> * currentNode);         //done
-    void inorderTransversal(TreeNode<Type> * currentNode);          //done
-    void postorderTransversal(TreeNode<Type> * currentNode);        //done
+    void preorderTraversal(TreeNode<Type> * currentNode);         //done
+    void inorderTraversal(TreeNode<Type> * currentNode);          //done
+    void postorderTraversal(TreeNode<Type> * currentNode);        //done
 };
 
 #endif /* BinaryTree_hpp */

@@ -22,7 +22,7 @@ public:
     TreeNode();
     TreeNode(const Type& value);
     TreeNode(const Type& value, TreeNode<Type> * parent);
-    void setLeftchild(TreeNode<Type> * leftChild);
+    void setLeftChild(TreeNode<Type> * leftChild);
     void setRightChild(TreeNode<Type> * rightChild);
     void setParent(TreeNode<Type> * parent);
     TreeNode<Type> * getLeftChild();
