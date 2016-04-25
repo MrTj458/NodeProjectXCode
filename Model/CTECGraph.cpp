@@ -29,5 +29,6 @@ void CTECGraph<Type> :: addVertex(const Type &value)
 template <class Type>
 void CTECGraph<Type> :: addEdge(int source, int target)
 {
-    
+    assert(source < size() && target < size());
+    adjacencyMatrix[source][target] = true;
 }
