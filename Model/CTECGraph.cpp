@@ -73,3 +73,10 @@ std::set<int> CTECGraph<Type> :: neighbors(int vertex) const
     }
     return vertexNeighbors;
 }
+
+template <class Type>
+void CTECGraph<Type> :: removeEdge(int source, int target)
+{
+    assert(source < size() && target < size());
+    adjacencyMatrix[source][target] = false;
+}
