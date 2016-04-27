@@ -199,7 +199,7 @@ template <class Type>
 int CTECBinaryTree<Type>::getSize()
 {
     size = 0;
-    size = calculateSize(root);
+    calculateSize(root);
     return size;
 }
 
@@ -209,7 +209,7 @@ void CTECBinaryTree<Type>::calculateSize(TreeNode<Type> * currentNode)
     if(currentNode != nullptr)
     {
         calculateSize(currentNode->getLeftChild());
-        calculateSize(currentNode->getLeftChild());
+        calculateSize(currentNode->getRightChild());
         size++;
     }
 }

@@ -266,8 +266,14 @@ void NodeController::tryTree()
     
     firstTree.insert(72);
     firstTree.insert(846);
+    cout << "Current size: " << firstTree.getSize() << endl;
     firstTree.insert(-42);
     firstTree.insert(3);
+    firstTree.insert(93);
+    cout << "Current size: " << firstTree.getSize() << endl;
+    firstTree.insert(7293);
+    firstTree.insert(5450);
+    cout << "Current size: " << firstTree.getSize() << endl;
     
     cout << "The tree  in order traversal:" << endl;
     firstTree.inorderTraversal(firstTree.getRoot());
@@ -281,4 +287,9 @@ void NodeController::tryTree()
     cout << "The tree  post order traversal:" << endl;
     firstTree.postorderTraversal(firstTree.getRoot());
     cout << endl;
+    
+    firstTree.remove(3);
+    
+    cout << "In order transversal after remove:" << endl;
+    firstTree.inorderTraversal(firstTree.getRoot());
 }
