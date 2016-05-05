@@ -26,5 +26,5 @@ CTECHashTable<Type> :: CTECHashTable()
 template <class Type>
 CTECHashTable<Type> :: ~CTECHashTable<Type>()
 {
-    
+    delete [] internalStorage;
 }
