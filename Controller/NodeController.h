@@ -13,6 +13,7 @@
 #include "../Model/CTECList.cpp"
 #include "../Model/Timer.h"
 #include "../Model/CTECBinaryTree.cpp"
+#include "../Model/CTECGraph.cpp"
 #include <string>
 
 using namespace std;
@@ -36,6 +37,7 @@ private:
     void doQuick();
     
     void tryTree();
+    void tryGraphs();
 public:
 	NodeController();
 	virtual ~NodeController();

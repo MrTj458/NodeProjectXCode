@@ -24,7 +24,8 @@ NodeController::~NodeController()
 
 void NodeController :: start()
 {
-    tryTree();
+    tryGraphs();
+    //tryTree();
     //doQuick();
     //doMergeSort();
     //sortData();
@@ -292,4 +293,26 @@ void NodeController::tryTree()
     
     cout << "In order transversal after remove:" << endl;
     firstTree.inorderTraversal(firstTree.getRoot());
+}
+
+void NodeController::tryGraphs()
+{
+    CTECGraph<int> * graph = new CTECGraph<int>();
+    
+    graph->addVertex(5);
+    graph->addEdge(0, 1);
+    graph->addVertex(4);
+    graph->addEdge(1, 2);
+    graph->addVertex(10);
+    graph->addEdge(2, 3);
+    graph->addVertex(73);
+    graph->addEdge(3, 4);
+    graph->addVertex(900531);
+    graph->addEdge(4, 5);
+    graph->addVertex(-83);
+    graph->addEdge(5, 6);
+    graph->addVertex(-54);
+    
+    graph->breadthFirstTraversal(*graph, -83);
+    graph->depthFirstTraversal(*graph, -83);
 }
