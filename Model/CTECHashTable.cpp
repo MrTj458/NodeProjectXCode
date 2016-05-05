@@ -23,8 +23,20 @@ CTECHashTable<Type> :: CTECHashTable()
     this->internalStorage = new Type[capacity];
 }
 
+/*
+ * Deallocates all memory attached to thinternal storage.
+ */
 template <class Type>
 CTECHashTable<Type> :: ~CTECHashTable<Type>()
 {
     delete [] internalStorage;
+}
+
+/*
+ * return the size of the da structure.
+ */
+template <class Type>
+int CTECHashTable<Type> :: getSize()
+{
+    return this->size;
 }
