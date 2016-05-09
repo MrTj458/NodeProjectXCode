@@ -135,3 +135,24 @@ bool CTECHashTable<Type> :: isPrime(int candidateNumber)
     
     return isPrime;
 }
+
+template <class Type>
+void CTECHashTable<Type> :: updateCapacity()
+{
+    int updatedCapacity = getNextPrime();
+    int oldCapacity = capacity;
+    capacity = updatedCapacity;
+    
+    HashNode<Type> * largerStorage = new HashNode<Type>[capacity];
+    
+    for(int index = 0; index < oldCapacity; index++)
+    {
+        if(internalStorage[index] != nullptr)
+        {
+            int updatedIndex = findPosition(internalStorage[index]);
+            largerStorage[updatedIndex] = internalStorage[index];
+        }
+    }
+    
+    internalStorage = largerStorage;
+}
