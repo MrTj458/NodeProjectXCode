@@ -20,7 +20,7 @@ CTECHashTable<Type> :: CTECHashTable()
     this->size = 0;
     this->capacity = 101;
     this->efficiencyPercentage = 0.667;
-    this->internalStorage = new Type[capacity];
+    this->internalStorage = new HashNode<Type>[capacity];
 }
 
 /*
@@ -49,16 +49,16 @@ int CTECHashTable<Type> :: getSize()
  * size of the structure.
  */
 template <class Type>
-void CTECHashTable<Type> :: add(const Type& value)
+void CTECHashTable<Type> :: add(HashNode<Type> currentNode)
 {
-    if(!contains(value))
+    if(!contains(currentNode))
     {
         //resize if needed
         if(size / capacity >= this->efficiencyPercentage)
         {
-            updateSize();
+            updateCapacity();
         }
-        int insertionIndex = findPosition(value);
+        int insertionIndex = findPosition(currentNode);
         
         if(internalStorage[insertionIndex]!= nullptr)
         {
@@ -68,7 +68,21 @@ void CTECHashTable<Type> :: add(const Type& value)
             }
         }
         
-        internalStorage[insertionIndex] = value;
+        internalStorage[insertionIndex] = currentNode;
         size++;
     }
+}
+
+/*
+ * Finds the simplest hash for the associated key/value pair.
+ * Uing a modlo of the key by the capacity.
+ */
+template <class Type>
+int CTECHashTable<Type> :: findPosition(HashNode<Type> currentNode)
+{
+    int position = 0;
+    
+    position = currentNode.getKey() % capacity;
+    
+    return position;
 }
