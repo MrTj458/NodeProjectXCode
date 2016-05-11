@@ -22,6 +22,10 @@ CTECHashTable<Type> :: CTECHashTable()
     this->capacity = 101;
     this->efficiencyPercentage = 0.667;
     this->internalStorage = new HashNode<Type>[capacity];
+    
+    this->chainSize = 0;
+    this->chainedCapacity = 101;
+    this->chainedStorage = new CTECList<HashNode<Type>>[chainedCapacity];
 }
 
 /*
@@ -31,6 +35,7 @@ template <class Type>
 CTECHashTable<Type> :: ~CTECHashTable<Type>()
 {
     delete [] internalStorage;
+    delete [] chainedStorage;
 }
 
 /*
@@ -63,6 +68,8 @@ void CTECHashTable<Type> :: add(HashNode<Type> currentNode)
         
         if(internalStorage[insertionIndex]!= nullptr)
         {
+            insertionIndex = handleCollision(currentNode);
+            
             while(internalStorage[insertionIndex] != nullptr)
             {
                 insertionIndex = (insertionIndex + 1) % capacity;
@@ -72,6 +79,31 @@ void CTECHashTable<Type> :: add(HashNode<Type> currentNode)
         internalStorage[insertionIndex] = currentNode;
         size++;
     }
+}
+
+template <class Type>
+void CTECHashTable<Type> :: addChained(HashNode<Type> currentNode)
+{
+    if(chainedSize / chainedCapacity >= efficiencyPercentage)
+    {
+        updateChainedCapacity();
+    }
+    int insertionIndex = findPosition(currentNode);
+    
+    //The spot is not empty.
+    if(chainedStorage[insertionIndex] != nullptr)
+    {
+        CTECList<HashNode<Type>> temp = chainedStorage[insertionIndex];
+        temp.addEnd(currentNode);
+    }
+    else //The spot is empty.
+    {
+        CTECList<HashNode<Type>> tempList;
+        tempList.addEnd(currentNode);
+        chainedStorage[insertionIndex] = tempList;
+    }
+    
+    chainedSize++;
 }
 
 /*
@@ -195,4 +227,14 @@ bool CTECHashTable<Type> :: remove(HashNode<Type> currentNode)
     }
     
     return hasBeenRemoved;
+}
+
+template <class Type>
+int CTECHashTable<Type> :: handleCollision(HashNode<Type> currentNode)
+{
+    int updatedPosition = findPosition(currentNode);
+    
+    updatedPosition = (47 + (updatedPosition * updatedPosition)) % capacity;
+    
+    return updatedPosition;
 }
