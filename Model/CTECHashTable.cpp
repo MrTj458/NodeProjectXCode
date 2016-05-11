@@ -190,6 +190,38 @@ void CTECHashTable<Type> :: updateCapacity()
 }
 
 template <class Type>
+void CTECHashTable<Type> :: updateChainedCapacity()
+{
+    int updatedChainedCpaity = getNextPrime();
+    int oldChainedCapacity = chainedCapacity;
+    chainedCapacity = updatedChainedCpaity;
+    
+    CTECList<HashNode<Type>> * largerChainedStorage = new CTECList<HashNode<Type>>[updatedChainedCpaity];
+    
+    for(int index = 0; index < oldChainedCapacity; index++)
+    {
+        if(chainedStorage[index] != nullptr)
+        {
+            CTECList<HashNode<Type>> temp = chainedStorage[index];
+            for(int innerIndex = 0; innerIndex < temp.getSize(); innerIndex++)
+            {
+                int updatedChainedPosition = findPosition(temp.getFromIndex(innerIndex));
+                if(largerChainedStorage[updatedChainedPosition] == nullptr)
+                {
+                    CTECList<HashNode<Type>> insertList;
+                    insertList.addEnd(temp.getFromIndex(innerIndex));
+                    largerChainedStorage[updatedChainedPosition] = insertList;
+                }
+                else
+                {
+                    largerChainedStorage[updatedChainedPosition].addEnd(temp.getFromIndex(innerIndex));
+                }
+            }
+        }
+    }
+}
+
+template <class Type>
 bool CTECHashTable<Type> :: contains(HashNode<Type> currentNode)
 {
     bool isInTable = false;
