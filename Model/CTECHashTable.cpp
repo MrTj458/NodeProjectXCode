@@ -192,11 +192,11 @@ void CTECHashTable<Type> :: updateCapacity()
 template <class Type>
 void CTECHashTable<Type> :: updateChainedCapacity()
 {
-    int updatedChainedCpaity = getNextPrime();
+    int updatedChainedCapaity = getNextPrime();
     int oldChainedCapacity = chainedCapacity;
-    chainedCapacity = updatedChainedCpaity;
+    chainedCapacity = updatedChainedCapaity;
     
-    CTECList<HashNode<Type>> * largerChainedStorage = new CTECList<HashNode<Type>>[updatedChainedCpaity];
+    CTECList<HashNode<Type>> * largerChainedStorage = new CTECList<HashNode<Type>>[updatedChainedCapaity];
     
     for(int index = 0; index < oldChainedCapacity; index++)
     {
