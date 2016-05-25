@@ -14,6 +14,7 @@
 #include "../Model/Timer.h"
 #include "../Model/CTECBinaryTree.cpp"
 #include "../Model/CTECGraph.cpp"
+#include "../Model/CTECHashTable.cpp"
 #include <string>
 
 using namespace std;
@@ -43,6 +44,8 @@ public:
 	virtual ~NodeController();
 	void start();
 	void testLists();
+    
+    void testHash();
 };
 
 #endif /* CONTROLLER_NODECONTROLLER_H_ */
